@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "test";
+    Layout = "~/Views/Shared/_LayoutBack.cshtml";
+}
+<link href="~/assets/jqueryUI/jquery-ui.css" rel="stylesheet" />
+<script src="~/assets/jqueryUI/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tabs').tabs();
+    });
+</script>
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <div id="tabs" style="width: 400px">
+                        <ul>
+                            <li><a href="#tab1">Tab 1</a></li>
+                            <li><a href="#tab2">Tab 2</a></li>
+                            <li><a href="#tab3">Tab 3</a></li>
+                        </ul>
+                        <div id="tab1">
+                            This is Tab 1 Content
+                        </div>
+                        <div id="tab2">
+                            This is Tab 2 Content
+                        </div>
+                        <div id="tab3">
+                            This is Tab 3 Content
+                        </div>
+                        @*<h3>Select properties</h3>
+                            <section>
+                                <h3>Select properties</h3>
+                                <div class="form-group">
+                                        <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="form-check form-check-warning">
+                                                            <label class="form-check-label">
+                                                                <input type="checkbox" class="form-check-input">
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                </div>
+                            </section>
+                            <h3>Fill properties</h3>
+                            <section>
+                                <div class="row">
+                                   <h1>tab2</h1>
+                                </div>
+                            </section>
+                            <h3>Comments</h3>
+                            <section>
+                                <h3>Comments</h3>
+                                <div class="form-group">
+                                    <label>Comments</label>
+                                    <textarea class="form-control" rows="3"></textarea>
+                                </div>
+                            </section>
+                            <h3>Finish</h3>
+                            <section>
+                                <h3>Finish</h3>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="checkbox" type="checkbox">
+                                        I agree with the Terms and Conditions.
+                                    </label>
+                                </div>
+                            </section>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

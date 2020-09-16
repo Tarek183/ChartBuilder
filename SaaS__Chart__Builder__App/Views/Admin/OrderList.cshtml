@@ -1,0 +1,61 @@
+﻿@model IEnumerable<SaaS__Chart__Builder__App.Models.Shop__Commande>
+
+@{
+    ViewBag.Title = "OrderList";
+    Layout = "~/Views/Shared/_LayoutBack.cshtml";
+}
+<div class="content-wrapper">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title"><strong>Order List</strong></h4>
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table id="order-listing" class="table">
+                            <thead>
+                                <tr class="bg-primary text-white">
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Date__Commande</th>
+                                    <th>Heure__Commande</th>
+                                    <th>Actions </th>
+                                </tr>
+                            </thead>
+                            @foreach (var item in Model)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Title)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Date__Commande)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Heure__Commande)
+                                        </td>
+                                        @*<td>
+                                                @Html.DisplayFor(modelItem => item.ID____Shop__Client)
+                                            </td>*@
+                                        <td>
+                                            <button class="btn btn-outline-success">Edit</button>
+                                            <button class="btn btn-outline-danger">Delete</button>
+                                            <button class="btn btn-outline-primary">View</button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

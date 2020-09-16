@@ -1,0 +1,54 @@
+﻿@model SaaS__Chart__Builder__App.Models.ViewModel
+@{
+    ViewBag.Title = "FillProperties";
+    Layout = "~/Views/Shared/_LayoutBack.cshtml";
+    var LID = Model.theId;
+}
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div>
+                                <button type="button" class="btn btn-primary btn-circle mx-3" style="width:270px; height:50px" data-toggle="tab" href="#menu1">2. Fill Properties</button>
+                            </div>
+                            <div class="tab-content">
+                                @using (Html.BeginForm("FillProperties", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "example-form" }))
+                                {
+                                    <div class="row">
+                                        @foreach (var pr in Model.selectedProerties)
+                                        {
+                                            <div class="col-md-3 form-group">
+                                                <div class="flat-green single-row">
+                                                    <div class="radio">
+                                                        <strong><label>@pr.Title</label></strong>
+                                                        @if (pr.Title.Contains("Color") || pr.Title.Contains("color"))
+                                                        {
+                                                            <input type="hidden" value="@pr.ID_" name="theIds" />
+                                                            <input type='text' style="border-color:lightgrey;" class="color-picker" name="selectedOnes" data-mode="gradient" value="#5E50F9" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <input type="hidden" value="@pr.ID_" name="theIds" />
+                                                            <input type="text" class="form-control" name="selectedOnes" style="border-color: lightgrey" />
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                    <button type="submit" class="btn btn-success" style="margin-left:400px; width:200px">Submit <i class="fa fa-chevron-right"></i></button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

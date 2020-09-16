@@ -1,0 +1,44 @@
+﻿@model SaaS__Chart__Builder__App.Models.ViewModel
+@{
+    ViewBag.Title = "QueryBuilder";
+    Layout = "~/Views/Shared/_LayoutBack.cshtml";
+}
+<div class="content-wrapper">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title"><strong>Query Builder</strong></h4>
+            <div class="row">
+                <div class="col-12">
+                    <div class="panel-body">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label col-lg-3" for="inputSuccess"></label>
+                                <div class="col-md-6 form-group">
+                                    <label>Write your Query:</label>
+
+                                    @Html.TextAreaFor(model => model.request, 12, 135, new { htmlAttributes = new { @class = "form-control m-bot15" } })
+
+                                <button class="btn btn-success" type="submit" style="width:300px; margin-left:800px">
+                                    <i class="mdi mdi-play"></i> Execute
+                                </button>
+                                    @if (Model.lastString != null)
+                                    {
+                                     <h3><i class="mdi mdi-table-large text-primary"></i> Results</h3>
+                                     <div style="background-color:ghostwhite; width:1100px">
+                                      @Html.Nl2Br(Model.lastString)
+                                     </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

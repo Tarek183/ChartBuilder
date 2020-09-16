@@ -1,0 +1,69 @@
+﻿@model IEnumerable<SaaS__Chart__Builder__App.Models.Dashboard__Chart____88____core__Menus>
+@{
+    ViewBag.Title = "GetClients";
+    Layout = "~/Views/Shared/_LayoutBack.cshtml";
+}
+    @*<script src="~/Scripts/jquery-3.4.1.js"></script>*@
+
+<div class="content-wrapper">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title"><strong>Clients Charts </strong></h4>
+            <button class="btn btn-success" onclick="location.href='@Url.Action("CreateChart", "Admin")'">Add New</button>  
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table id="order-listing" class="table">
+                            <thead>
+                                <tr class="bg-primary text-white">
+                                    <th>Chart Type</th>
+                                    <th>Chart Title</th>
+                                    <th>Actions </th>
+                                </tr>
+                            </thead>
+                            @foreach (var item in Model)
+                            {
+                                if (item.core__Menus.Title.Equals("Client"))
+                                {
+                                <tbody>
+                                    <tr id="#row_@item.ID">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Dashboard__Chart.Title)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Title)
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-outline-success" onclick="location.href='/Admin/SelectProperties?id=@item.ID____Dashboard__Chart'">Edit</button>
+                                            @*<button class="btn btn-outline-danger">Delete</button>*@
+                                            <button class="btn btn-outline-danger" onclick="DeleteData('@item.ID')">Delete</button>
+                                            <button class="btn btn-outline-primary">View</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                }
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function DeleteData(ID) {
+        if (confirm('Are you sure to delete this Record ?')) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("DeleteData", "Admin")/' + ID,
+                success: function (data) {
+                    if (data.success) {
+                        datatable.ajax.reload();   
+                    }
+                }
+            });
+        }
+    }
+</script>

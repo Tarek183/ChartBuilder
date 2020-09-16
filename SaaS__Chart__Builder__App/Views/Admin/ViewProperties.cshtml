@@ -1,0 +1,56 @@
+﻿@model SaaS__Chart__Builder__App.Models.ViewModel
+@{
+    ViewBag.Title = "ViewProperties";
+    Layout = "~/Views/Shared/_LayoutBack.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title"><strong>Properties </strong></h4>
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table id="order-listing" class="table">
+                            <thead>
+                                <tr class="bg-primary text-white">
+                                    <th>Chart Title</th>
+                                    <th>Properties</th>
+                                    <th>Values</th>
+                                    <th>Actions </th>
+                                </tr>
+                            </thead>
+                            @foreach (var item in Model.selectedProerties)
+                            {
+                                foreach (var v in Model.Menu_Chart_Properties)
+                                {
+                                    if (item.ID_ == v.ID____Dashboard__Chart__Property)
+                                    {
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => v.ID____Dashboard__Chart____88____core__Menus)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Title)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => v.Value)
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-outline-danger" onclick="ConfirmDelete('@item.ID_')">Delete</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    }
+                                }
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

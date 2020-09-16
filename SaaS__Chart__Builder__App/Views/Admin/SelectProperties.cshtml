@@ -1,0 +1,50 @@
+﻿@model SaaS__Chart__Builder__App.Models.ViewModel
+@{
+    ViewBag.Title = "SelectProperties";
+    Layout = "~/Views/Shared/_LayoutBack.cshtml";
+    var LID = Model.theId;
+}
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div>
+                                <button type="button" class="btn btn-primary btn-circle mx-3" style="width:270px; height:50px" data-toggle="tab" href="#menu1">1. Select Properties</button>
+                            </div>
+                            <div class="tab-content">
+                                <div>
+                                    @using (Html.BeginForm("SelectProperties", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "example-form" }))
+                                    {
+                                        <div class="row">
+                                            @Html.HiddenFor(m => m.theId, new { @Value = LID })
+
+                                            @foreach (var prop in Model.Chart_Property)
+                                            {
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="form-check form-check-warning">
+                                                            <label class="form-check-label">
+                                                                <input type="checkbox" class="form-check-input" value="@prop.ID_" name="form_coll">
+                                                                @prop.Title
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                        <button type="submit" class="btn btn-success" style="margin-left:400px; width:200px">Submit</button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
